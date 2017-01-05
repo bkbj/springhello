@@ -1,9 +1,11 @@
 package com.spring.hello.model;
 
+import java.io.Serializable;
+
 /**
  * Created by ustc-lezg on 05/01/2017.
  */
-public class Person {
+public class Person implements Serializable{
 
     private int id;
     private int age;

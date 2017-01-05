@@ -2,6 +2,7 @@ package com.spring.hello.service;
 
 import com.spring.hello.mapper.PersonMapper;
 import com.spring.hello.model.Person;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,9 @@ import org.springframework.stereotype.Service;
 public class PersonService {
 
     @Autowired
-    private PersonMapper pMapper;
+    private PersonMapper personMapper;
 
     public Person findPerson(int id) {
-        return pMapper.findPerson(id);
+        return personMapper.findPerson(id);
     }
 }

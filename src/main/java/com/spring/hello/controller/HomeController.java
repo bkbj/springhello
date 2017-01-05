@@ -3,6 +3,7 @@ package com.spring.hello.controller;
 import com.spring.hello.model.Message;
 import com.spring.hello.model.Person;
 import com.spring.hello.service.PersonService;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
