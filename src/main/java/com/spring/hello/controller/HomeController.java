@@ -1,6 +1,9 @@
 package com.spring.hello.controller;
 
 import com.spring.hello.model.Message;
+import com.spring.hello.model.Person;
+import com.spring.hello.service.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController {
 
+    @Autowired
+    private PersonService personService;
+
     @GetMapping("/")
     public String welcome() {
         return "Welcome SpringHello";
@@ -20,5 +26,10 @@ public class HomeController {
     @GetMapping("/message/{player}")
     public Message getMessage(@PathVariable String player) {
         return new Message(player, "Hello " + player);
+    }
+
+    @GetMapping("/person/{id}")
+    public Person getPerson(@PathVariable int id) {
+        return personService.findPerson(id);
     }
 }
