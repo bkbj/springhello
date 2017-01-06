@@ -9,5 +9,8 @@
     <select id="findPerson" parameterType="int" resultType="Person">
         SELECT * FROM person WHERE id = #{id}
     </select>
-
+    <insert id="savePerson" parameterType="Person" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO person (pname,age,email,telephone,address)
+        VALUES (#{pname},#{age},#{email},#{telephone},#{address})
+    </insert>
 </mapper>

@@ -18,4 +18,8 @@ public class PersonService {
     public Person findPerson(int id) {
         return personMapper.findPerson(id);
     }
+
+    public int savePerson(Person p) {
+        return personMapper.savePerson(p);
+    }
 }

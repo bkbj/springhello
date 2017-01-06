@@ -21,11 +21,11 @@ public class MybatisConfig {
     private static final String MYBATIS_CONFIG = "mybatis-config.xml";
     private static final String MAPPER_PATH = "/mapper/*.xml";
     private static final String DRIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/godb?useUnicode=true&characterEncoding=utf-8&useSSL=false";
+    private static final String URL = "jdbc:mysql://localhost:3306/lezgdb?useUnicode=true&characterEncoding=utf8&useSSL=false";
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "root";
 
-    @Bean(destroyMethod = "close")
+    //@Bean(destroyMethod = "close")
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(DRIVER_CLASS_NAME);

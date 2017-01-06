@@ -11,4 +11,5 @@ import org.apache.ibatis.annotations.Param;
 public interface PersonMapper {
 
     Person findPerson(int id);
+    int savePerson(Person person);
 }

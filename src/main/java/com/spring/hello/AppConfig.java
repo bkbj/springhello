@@ -31,6 +31,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     public StringHttpMessageConverter stringHttpMessageConverter() {
         StringHttpMessageConverter stringHttpMessageConverter = new StringHttpMessageConverter();
         stringHttpMessageConverter.setDefaultCharset(Charset.forName("UTF-8"));
+        stringHttpMessageConverter.setWriteAcceptCharset(false);
         return stringHttpMessageConverter;
     }
 
@@ -54,7 +55,7 @@ public class AppConfig extends WebMvcConfigurerAdapter{
     }
 
     /**
-     * 默认
+     * 配置静态资源的处理
      */
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {

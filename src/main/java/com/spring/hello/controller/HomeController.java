@@ -4,9 +4,7 @@ import com.spring.hello.model.Message;
 import com.spring.hello.model.Person;
 import com.spring.hello.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by ustc-lezg on 04/01/2017.
@@ -31,5 +29,10 @@ public class HomeController {
     @GetMapping("/person/{id}")
     public Person getPerson(@PathVariable int id) {
         return personService.findPerson(id);
+    }
+
+    @PostMapping("/person/save")
+    public String savePerson(Person p) {
+        return personService.savePerson(p) == 1 ? "success" : "failure";
     }
 }

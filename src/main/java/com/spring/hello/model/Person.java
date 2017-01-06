@@ -7,9 +7,10 @@ import java.io.Serializable;
  */
 public class Person implements Serializable{
 
+    private static final long serialVersionUID = 1L;
     private int id;
     private int age;
-    private String name;
+    private String pname;
     private String email;
     private String telephone;
     private String address;
@@ -22,12 +23,12 @@ public class Person implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPname() {
+        return pname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPname(String pname) {
+        this.pname = pname;
     }
 
     public int getAge() {
