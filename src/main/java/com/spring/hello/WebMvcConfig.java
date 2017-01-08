@@ -13,16 +13,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import java.nio.charset.Charset;
 import java.util.List;
 
-
 /**
- * 配置类
+ * WebMvc配置类
  * Created by ustc-lezg on 04/01/2017.
  */
 
 @EnableWebMvc
 @EnableAspectJAutoProxy
 @ComponentScan(basePackages = "com.spring.hello")
-public class AppConfig extends WebMvcConfigurerAdapter{
+public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
     /**
      * 字符串消息转换器

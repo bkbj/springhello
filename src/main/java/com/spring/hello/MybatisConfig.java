@@ -4,18 +4,27 @@ import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 
 /**
  * mybatis config
  * Created by ustc-lezg on 05/01/2017.
  */
-
+@Configuration
+@EnableTransactionManagement
 public class MybatisConfig {
 
     private static final String MYBATIS_CONFIG = "mybatis-config.xml";
@@ -25,8 +34,13 @@ public class MybatisConfig {
     private static final String USER_NAME = "root";
     private static final String PASSWORD = "root";
 
-    //@Bean(destroyMethod = "close")
+    private static DataSource dataSource;
+
+    @Bean(destroyMethod = "close")
     public DataSource dataSource() {
+        if (dataSource != null) {
+            return dataSource;
+        }
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(DRIVER_CLASS_NAME);
         dataSource.setUrl(URL);
@@ -34,6 +48,7 @@ public class MybatisConfig {
         dataSource.setPassword(PASSWORD);
         dataSource.setMaxActive(20);
         dataSource.setInitialSize(1);
+        this.dataSource = dataSource;
         return dataSource;
     }
 
@@ -60,5 +75,10 @@ public class MybatisConfig {
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         mapperScannerConfigurer.setBasePackage("com.spring.hello.mapper");
         return mapperScannerConfigurer;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager() throws SQLException {
+        return new DataSourceTransactionManager(dataSource());
     }
 }

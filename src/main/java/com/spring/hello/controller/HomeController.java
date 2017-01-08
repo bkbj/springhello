@@ -33,6 +33,6 @@ public class HomeController {
 
     @PostMapping("/person/save")
     public String savePerson(Person p) {
-        return personService.savePerson(p) == 1 ? "success" : "failure";
+       return personService.savePerson(p) == 1 ? "success" : "failure";
     }
 }
